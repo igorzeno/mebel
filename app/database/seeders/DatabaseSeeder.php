@@ -14,6 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        \App\Models\Product::factory(20)->create();
 
+        $products = Product::all();
+        foreach ($products as $product) {
+            $this->call(StockSeeder::class);
+        }
     }
 }
