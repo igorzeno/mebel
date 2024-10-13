@@ -14,8 +14,10 @@ return new class extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Product::class)->nullable()->constrained();
-            $table->enum('color', ['GREEN','GRAY','SILVER'])->default('GREEN');
+            $table->bigInteger('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+
+            $table->enum('name', ['Moscow','London','Berlin'])->default('Moscow');
             $table->integer('stock')->unsigned()->nullable();
 
             $table->timestamps();

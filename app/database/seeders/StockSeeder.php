@@ -15,25 +15,25 @@ class StockSeeder extends Seeder
     public function run(): void
     {
         static $p = 1;
-        $colors = [
+        $names = [
             [
                 'product_id'  =>  $p,
-                'color'  => 'GREEN',
-                'stock' => rand(0,3),
+                'name'  => 'Moscow',
+                'stock' => $p==1 ? 0 : rand(0,3),
             ],
             [
                 'product_id'  =>  $p,
-                'color'  => 'GRAY',
-                'stock' => rand(0,3),
+                'name'  => 'London',
+                'stock' => $p==1 ? 0 : rand(0,3),
             ],
             [
                 'product_id'  =>  $p,
-                'color'  => 'SILVER',
-                'stock' => rand(0,3),
+                'name'  => 'Berlin',
+                'stock' => $p==1 ? 0 : rand(0,3),
             ]
         ];
-        foreach ($colors as $color) {
-            Stock::create($color);
+        foreach ($names as $name) {
+            Stock::create($name);
         }
         $p++;
     }
