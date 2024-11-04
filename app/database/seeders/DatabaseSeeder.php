@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Product::factory(20)->create();
+        \App\Models\Product::factory(3000)->create();
 
         $products = Product::all();
         foreach ($products as $product) {
