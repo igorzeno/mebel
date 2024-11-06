@@ -23,9 +23,12 @@ services:
     container_name: test_app
 
   db:
-    image: mariadb
+    build:
+      context: .
+      dockerfile: docker/mariadb/Dockerfile
     volumes:
       - ./tmp/db:/var/lib/mysql
+     # - ./docker/mariadb:/etc/mysql
     environment:
       MYSQL_DATABASE: test
       MYSQL_ROOT_PASSWORD: root
