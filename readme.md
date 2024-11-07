@@ -1,2 +1,2 @@
-## Тестовый проект CRUD API мебель products and stock
+## Тестовый проект API мебель products and stock
 
