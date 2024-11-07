@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     /**
@@ -17,12 +15,13 @@ class HomeController extends Controller
 //    }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return void
      */
+
     public function index()
     {
+        # Comment
+        # Comment 3
         $file = '/var/www/app/Http/Controllers/HomeController.php';
 
         if (is_readable($file)) {
