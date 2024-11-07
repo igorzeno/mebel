@@ -21,6 +21,8 @@ services:
     depends_on:
       - db
     container_name: test_app
+    environment:
+      PHP_IDE_CONFIG: "serverName=docker"
 
   db:
     build:
@@ -28,7 +30,6 @@ services:
       dockerfile: docker/mariadb/Dockerfile
     volumes:
       - ./tmp/db:/var/lib/mysql
-     # - ./docker/mariadb:/etc/mysql
     environment:
       MYSQL_DATABASE: test
       MYSQL_ROOT_PASSWORD: root

@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
       libpng-dev \
       libzip-dev \
       zip unzip \
+      procps \
       git && \
       docker-php-ext-install pdo_mysql && \
       docker-php-ext-install bcmath && \
@@ -14,6 +15,13 @@ RUN apt-get update && apt-get install -y \
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
+
+COPY ./docker/app/conf.d/* $PHP_INI_DIR/conf.d/
 
 COPY ./docker/app/php.ini /usr/local/etc/php/conf.d/php.ini
 

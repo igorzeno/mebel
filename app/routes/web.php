@@ -15,15 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index']);
 
 Route::get('/', function () {
-    return null;
+    return phpinfo();
 });
 
-Route::get('/test', function () {
-    return 1;
-});
+//
+//Route::get('/', function () {
+//    return null;
+//});
+//
+//Route::get('/test', function () {
+//    return 1;
+//});
