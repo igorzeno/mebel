@@ -30,4 +30,8 @@ class Product extends Model
     public function stocks(){
         return $this->hasMany(Stock::class);
     }
+
+    public function stocksName() {
+        return $this->hasMany(Stock::class)->select(['name']);
+    }
 }

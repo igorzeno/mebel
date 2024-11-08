@@ -8,6 +8,7 @@ use App\Http\Resources\Product\ProductShowResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 
 class ProductController extends Controller
@@ -31,7 +32,8 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $query = $this->model->with('stocks');
+        \DB::connection()->enableQueryLog();
+        $query = $this->model->with('stocksName');
 
         if ($request->input('priceStart')) {
             $query = $query->where('price', '>=', $request->input('priceStart'));
@@ -49,6 +51,31 @@ class ProductController extends Controller
                 $query->where('stocks.stock', '>', 0);
             });
         }
+        $query->orderBy('price')->get();
+
+        $queries = \DB::getQueryLog();
+        dd($queries);
+
+//        $query = $this->model->with('stocksName');
+//
+//        if ($request->input('priceStart')) {
+//            $query = $query->where('price', '>=', $request->input('priceStart'));
+//        }
+//        if ($request->input('priceEnd')) {
+//            $query = $query->where('price', '<=', $request->input('priceEnd'));
+//        }
+//
+//        if ($request->input('stock')) {
+//            $query = $query->whereHas('stocks', function ($query) {
+//                $query->where('stocks.stock', '>', 0);
+//            });
+//        } else {
+//            $query = $query->whereDoesntHave('stocks', function ($query) {
+//                $query->where('stocks.stock', '>', 0);
+//            });
+//        }
+//        $query->orderBy('price')->get();
+
 
         return ProductResource::collection($query->orderBy('price')->get());
     }
