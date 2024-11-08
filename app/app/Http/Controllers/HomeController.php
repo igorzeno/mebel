@@ -21,9 +21,7 @@ class HomeController extends Controller
     public function index()
     {
         # Comment
-        # Comment 3
-        # Comment 4
-        # Comment 5
+
         $file = '/var/www/app/Http/Controllers/HomeController.php';
 
 //        if (is_readable($file)) {
