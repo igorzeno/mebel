@@ -30,6 +30,7 @@ services:
       dockerfile: docker/mariadb/Dockerfile
     volumes:
       - ./tmp/db:/var/lib/mysql
+      - './docker/mariadb/my.cnf:/etc/my.cnf:ro'
     environment:
       MYSQL_DATABASE: test
       MYSQL_ROOT_PASSWORD: root

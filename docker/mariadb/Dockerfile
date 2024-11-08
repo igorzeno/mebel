@@ -1,5 +1,7 @@
 FROM mariadb
 
-COPY ./docker/mariadb/my.cnf /etc/mysql/my.cnf
+#RUN apt-get update \
+ #   && apt-get install percona-toolkit
+
 
 

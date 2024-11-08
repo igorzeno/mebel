@@ -10,7 +10,7 @@ class StockResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'stock' => $this->stock,
+          //  'stock' => $this->stock,
         ];
     }
 }
